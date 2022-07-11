@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentResponerPregunta">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="377dp"
+        android:layout_height="146dp"
+        android:background="@drawable/cajas_respuestas"
+        android:backgroundTint="#FFFFFF"
+        android:soundEffectsEnabled="false">
+
+        <Button
+            android:id="@+id/buttonPublicar3"
+            android:layout_width="119dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#F4F9F8"
+            android:inputType="textCapSentences"
+            android:paddingLeft="0sp"
+            android:paddingTop="0sp"
+            android:paddingRight="0sp"
+            android:paddingBottom="0sp"
+            android:text="@string/botonPublicar"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.912"
+            app:layout_constraintStart_toEndOf="@+id/buttonAgregarImagen3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+        <Button
+            android:id="@+id/buttonAgregarImagen3"
+            android:layout_width="139dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#F4F9F8"
+            android:inputType="textCapSentences"
+            android:paddingStart="8sp"
+            android:paddingLeft="0sp"
+            android:paddingTop="0sp"
+            android:paddingEnd="8sp"
+            android:paddingRight="0sp"
+            android:paddingBottom="0sp"
+            android:text="@string/botónAgregarImagen"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="352dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/escribirRespuestaIngreso"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
