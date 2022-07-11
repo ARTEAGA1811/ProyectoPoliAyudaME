@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProyectoPoliAyudaME</string>
+    <string name="busqueda">Buscar...</string>
 </resources>
