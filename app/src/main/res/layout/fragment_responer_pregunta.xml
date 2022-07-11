@@ -2,23 +2,23 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="377sp"
-    android:layout_height="146sp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".FragmentResponerPregunta">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:layout_width="377dp"
+        android:layout_height="146dp"
+        android:background="@drawable/cajas_respuestas"
         android:backgroundTint="#FFFFFF"
         android:soundEffectsEnabled="false">
 
         <Button
             android:id="@+id/buttonPublicar3"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="119dp"
             android:layout_height="35dp"
             android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
             android:backgroundTint="#F4F9F8"
             android:inputType="textCapSentences"
             android:paddingLeft="0sp"
@@ -28,15 +28,13 @@
             android:text="@string/botonPublicar"
             android:textColor="#000000"
             android:textSize="12sp"
-            app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.855"
+            app:layout_constraintHorizontal_bias="0.912"
             app:layout_constraintStart_toEndOf="@+id/buttonAgregarImagen3"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <Button
             android:id="@+id/buttonAgregarImagen3"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="139dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -49,12 +47,9 @@
             android:paddingEnd="8sp"
             android:paddingRight="0sp"
             android:paddingBottom="0sp"
-            android:shadowRadius="0"
             android:text="@string/botónAgregarImagen"
             android:textColor="#000000"
             android:textSize="12sp"
-            app:cornerRadius="10dp"
-            app:iconPadding="0sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 

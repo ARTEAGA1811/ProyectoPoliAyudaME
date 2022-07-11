@@ -8,9 +8,9 @@
     tools:context=".FragmentEscribirPregunta">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="377sp"
-        android:layout_height="146sp"
-        android:background="#FFFFFF"
+        android:layout_width="377dp"
+        android:layout_height="146dp"
+        android:background="@drawable/cajas_respuestas"
         android:backgroundTint="#FFFFFF">
 
         <EditText

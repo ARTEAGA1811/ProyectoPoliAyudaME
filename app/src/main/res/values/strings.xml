@@ -26,4 +26,8 @@
     <string name="titulo">Inserte título</string>
     <string name="escribeTuPregunta">Escribe tu pregunta:</string>
     <string name="descartarPregunta">Descartar</string>
+    <string name="busqueda">Buscar...</string>
+    <string name="tituloRespuestapregunta">Lorem Ipsum</string>
+    <string name="responderBoton">Responder</string>
+    <string name="responder">Responder</string>
 </resources>
