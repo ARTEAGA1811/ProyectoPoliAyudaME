@@ -38,7 +38,7 @@ class MisRespuestas : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        vista =  inflater.inflate(R.layout.fragment_preguntas_inicio, container, false)
+        vista =  inflater.inflate(R.layout.fragment_mis_respuestas, container, false)
 
         bttnPregunta = vista.findViewById(R.id.bttnAgregar)
 
