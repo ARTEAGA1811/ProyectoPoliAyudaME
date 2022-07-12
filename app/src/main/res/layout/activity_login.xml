@@ -75,7 +75,7 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnIniciarSesion"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -89,7 +89,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnRegistrarse"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"
