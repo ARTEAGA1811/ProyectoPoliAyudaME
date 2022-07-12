@@ -21,7 +21,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.btnIngresar.setOnClickListener {
-            val intent = Intent(this, Inicio::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
