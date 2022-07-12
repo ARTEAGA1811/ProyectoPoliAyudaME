@@ -11,7 +11,9 @@ class VerPreguntaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_pregunta)
 
-
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainerView4,FragmentResponerPregunta()).commit()
 
 
     }

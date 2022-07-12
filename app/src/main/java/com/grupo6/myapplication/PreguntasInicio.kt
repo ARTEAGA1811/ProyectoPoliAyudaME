@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
+import com.grupo6.myapplication.databinding.ActivityVerPreguntaBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +25,7 @@ class PreguntasInicio : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var bttnPregunta: Button
+    lateinit var layoutPegunta: LinearLayout
     lateinit var vista: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +45,15 @@ class PreguntasInicio : Fragment() {
         vista =  inflater.inflate(R.layout.fragment_preguntas_inicio, container, false)
 
         bttnPregunta = vista.findViewById(R.id.bttnAgregar)
+        layoutPegunta = vista.findViewById(R.id.pregunta1)
 
         bttnPregunta.setOnClickListener(){
             val intencion = Intent(getActivity(), ActivityAnadirPregunta::class.java)
+            startActivity(intencion)
+        }
+
+        layoutPegunta.setOnClickListener(){
+            val intencion = Intent(getActivity(), VerPreguntaActivity::class.java)
             startActivity(intencion)
         }
 
