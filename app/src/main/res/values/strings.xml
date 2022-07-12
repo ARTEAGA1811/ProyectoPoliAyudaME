@@ -44,4 +44,21 @@
     <string name="tituloRespuestapregunta">Lorem Ipsum</string>
     <string name="responderBoton">Responder</string>
     <string name="responder">Responder</string>
+    <string name="textViewUsuario">Usuario1</string>
+    <string name="textViewNombre">Nombre:</string>
+    <string name="textViewValorNombre">Victor Velepucha</string>
+    <string name="txtViewCorreo">E-mail:</string>
+    <string name="txtViewValorCorreo">victor.velepucha@epn.edu.ec</string>
+    <string name="textViewPuntos">Puntos</string>
+    <string name="textviewPreguntasHechas">Preguntas hechas</string>
+    <string name="textViewPreguntasContestadas">Preguntas Contestadas</string>
+    <string name="txtViewPremiosObtenidos">Premios Obtenidos</string>
+    <string name="txtValor">75</string>
+    <string name="txtPreguntasValor">5</string>
+    <string name="txtValorPreguntasRespondidas">5</string>
+    <string name="txtViewPuntosDisponibles">Puntos Disponibles</string>
+    <string name="textViewCuadernosFEPON">Cuadernos FEPON</string>
+    <string name="textView">200 pts</string>
+    <string name="txtViewsPts">200 pts</string>
+    <string name="btnCanjear">Canjear</string>
 </resources>
