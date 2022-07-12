@@ -1,10 +1,12 @@
 package com.grupo6.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 
 class Inicio : AppCompatActivity() {
     lateinit var bttnInicio:Button
@@ -15,6 +17,8 @@ class Inicio : AppCompatActivity() {
     lateinit var estadoMisPreguntas: ImageView
     lateinit var estadoMisRespuestas: ImageView
     lateinit var estadoCanje: ImageView
+    lateinit var tvMiPerfil: TextView
+    lateinit var logoP: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,7 +30,22 @@ class Inicio : AppCompatActivity() {
         estadoMisPreguntas = findViewById(R.id.imgEstadoMisPreg)
         estadoMisRespuestas = findViewById(R.id.imgEstadoMisRes)
         estadoCanje = findViewById(R.id.imgEstadoCanje)
+        tvMiPerfil = findViewById(R.id.miPerfil)
+        logoP = findViewById(R.id.logoP)
+
         bttnInicio.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragmentContainerView,PreguntasInicio()).commit()
+            estadoInicio.visibility = View.VISIBLE
+            estadoMisRespuestas.visibility = View.INVISIBLE
+            estadoMisPreguntas.visibility = View.INVISIBLE
+            estadoCanje.visibility = View.INVISIBLE
+
+
+        }
+
+        logoP.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentContainerView,PreguntasInicio()).commit()
@@ -60,15 +79,24 @@ class Inicio : AppCompatActivity() {
             estadoCanje.visibility = View.INVISIBLE
         }
 
-        /*bttnCanje.setOnClickListener {
+        bttnCanje.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragmentContainerView,Canje()).commit()
+                .replace(R.id.fragmentContainerView,CanjeFragment()).commit()
             estadoCanje.visibility = View.VISIBLE
             estadoMisPreguntas.visibility = View.INVISIBLE
             estadoMisRespuestas.visibility = View.INVISIBLE
             estadoInicio.visibility = View.INVISIBLE
-        }*/
+        }
+
+
+
+        tvMiPerfil.setOnClickListener {
+            val intent = Intent(this, UsuarioActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 }
