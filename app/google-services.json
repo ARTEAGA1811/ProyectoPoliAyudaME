@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505941530864",
+    "project_id": "proyectopoliayudame",
+    "storage_bucket": "proyectopoliayudame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505941530864:android:d3efb0f556e7b1b3b78a35",
+        "android_client_info": {
+          "package_name": "com.grupo6.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505941530864-dp7fq7fvd8jrjagn9eg92gf40fkrk0oh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-HOO6zGIEV0D9Tsoi1vG2yqEX328-HtM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505941530864-dp7fq7fvd8jrjagn9eg92gf40fkrk0oh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

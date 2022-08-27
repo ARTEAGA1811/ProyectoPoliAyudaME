@@ -65,6 +65,7 @@
             android:textColorHint="@color/color_secundario" />
 
         <CheckBox
+            android:id="@+id/checkBoxRecordarme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
