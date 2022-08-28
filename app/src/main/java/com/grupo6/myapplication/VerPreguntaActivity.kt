@@ -1,11 +1,10 @@
 package com.grupo6.myapplication
 
-import android.content.ClipDescription
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,15 +23,18 @@ class VerPreguntaActivity : AppCompatActivity() {
     lateinit var titulo: TextView
     lateinit var descripcion: TextView
     lateinit var fecha: TextView
+    var  idPregunta = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val profileName=intent. getStringExtra("usuario")
         setContentView(R.layout.activity_ver_pregunta)
+
         if (profileName != null) {
             consultarUsuarioRTDB(profileName)
-
+            println(idPregunta)
         }
+
         tvMiPerfil = findViewById(R.id.miPerfil2)
         logoP = findViewById(R.id.logoP2)
         usuario = findViewById(R.id.textViewUsuario)
@@ -74,10 +76,14 @@ class VerPreguntaActivity : AppCompatActivity() {
                     for (pregunta  in dataSnapshot.child("preguntas").children){
                         var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
                          if(preguntaObtenida.usuario == usuarioRequerido){
+
                              usuario.text = preguntaObtenida.usuario
                              titulo.text = preguntaObtenida.titulo
                              descripcion.text = preguntaObtenida.descripcion
                              fecha.text = preguntaObtenida.fecha
+                             consultarRespuestasRTDB(pregunta.key.toString())
+                             break
+
 
                          }
                     }
@@ -96,4 +102,47 @@ class VerPreguntaActivity : AppCompatActivity() {
         database.addValueEventListener(postListener)
 
     }
+    fun consultarRespuestasRTDB(idPregunta:String){
+        val database = Firebase.database.reference
+        val postListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.exists() &&
+                    dataSnapshot.child("respuestas").exists()&&
+                    dataSnapshot.child("respuestas").childrenCount>0
+                ){
+                    var respuestas  = ArrayList<Respuesta>()
+                    for (respuesta  in dataSnapshot.child("respuestas").children){
+                        respuestas.add(respuesta.getValue<Respuesta>()as Respuesta)
+                    }
+                    var respuestasFilradas  = ArrayList<Respuesta>()
+                    for(respuesta in respuestas){
+                        if(respuesta.idPregunta == idPregunta){
+
+
+                            respuestasFilradas.add(respuesta )
+                        }
+                    }
+                    //Poblar en RecyclerView información usando mi adaptador
+                    val recyclerViewRespuestas: RecyclerView = findViewById(R.id.recyclerViewRespuestas);
+                    recyclerViewRespuestas.layoutManager = LinearLayoutManager(this@VerPreguntaActivity);
+                    recyclerViewRespuestas.adapter = RespuestasAdapter(respuestasFilradas);
+                    recyclerViewRespuestas.setHasFixedSize(true);
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
+    }
+
 }

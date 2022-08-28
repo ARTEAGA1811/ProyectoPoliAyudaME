@@ -63,8 +63,6 @@ class PreguntasInicio : Fragment() {
 
         bttnPregunta = vista.findViewById(R.id.bttnAgregar)
 
-
-
         consultarPreguntasRTDB()
         bttnPregunta.setOnClickListener(){
             val intencion = Intent(getActivity(), ActivityAnadirPregunta::class.java)
@@ -108,8 +106,12 @@ class PreguntasInicio : Fragment() {
                 ){
                     var preguntas = ArrayList<Pregunta>()
                     for (pregunta  in dataSnapshot.child("preguntas").children){
-
-                        preguntas.add(pregunta.getValue<Pregunta>() as Pregunta)
+                        var idPregunta = pregunta.key
+                        var preguntaFinal = pregunta.getValue<Pregunta>() as Pregunta
+                        if (idPregunta != null) {
+                            preguntaFinal.idPregunta = idPregunta
+                        }
+                        preguntas.add(preguntaFinal)
                     }
 
                     //Poblar en RecyclerView información usando mi adaptador

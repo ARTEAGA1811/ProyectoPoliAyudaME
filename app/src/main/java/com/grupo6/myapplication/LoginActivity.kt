@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             //Guardar datos en preferencias.
             GuardarDatosEnPreferencias()
             AutenticarUsuario(email, clave)
-            finish()
+
         }
     }
 
