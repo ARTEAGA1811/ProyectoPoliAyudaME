@@ -21,6 +21,7 @@ class Inicio : AppCompatActivity() {
     lateinit var logoP: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bttnInicio = findViewById(R.id.bttnInicio)
