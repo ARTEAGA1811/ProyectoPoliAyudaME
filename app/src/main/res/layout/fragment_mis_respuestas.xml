@@ -63,7 +63,7 @@
 
 
             <TextView
-                android:id="@+id/tituloPregunta1"
+                android:id="@+id/textViewTitulo"
                 android:layout_width="281dp"
                 android:layout_height="19dp"
                 android:layout_margin="10dp"
@@ -71,7 +71,7 @@
                 android:textColor="#072D4B" />
 
             <TextView
-                android:id="@+id/descripcionPregunta1"
+                android:id="@+id/textViewDescripcion"
                 android:layout_width="339dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -84,7 +84,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/usuarioPregunta1"
+                    android:id="@+id/recyclerViewTextViewUsuario"
                     android:layout_width="71dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -92,7 +92,7 @@
                     android:text="Usuario1" />
 
                 <TextView
-                    android:id="@+id/fechaPregunta1"
+                    android:id="@+id/textViewFecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

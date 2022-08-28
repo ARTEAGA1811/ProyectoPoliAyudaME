@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -18,9 +19,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.grupo6.myapplication.databinding.ActivityInicioBinding
-import com.grupo6.myapplication.databinding.ActivityLoginBinding
-import com.grupo6.myapplication.databinding.FragmentPreguntasInicioBinding
+import org.w3c.dom.Text
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +39,8 @@ class PreguntasInicio : Fragment() {
     lateinit var layoutPegunta: LinearLayout
     lateinit var vista: View
     lateinit var titulo1: TextView
-
+    lateinit var recyclerViewPregunta: RecyclerView
+    lateinit var pregunta: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +62,8 @@ class PreguntasInicio : Fragment() {
         vista =  inflater.inflate(R.layout.fragment_preguntas_inicio, container, false)
 
         bttnPregunta = vista.findViewById(R.id.bttnAgregar)
-        layoutPegunta = vista.findViewById(R.id.pregunta1)
-        titulo1 = vista.findViewById(R.id.tituloPregunta1)
+
+
 
         consultarPreguntasRTDB()
         bttnPregunta.setOnClickListener(){
@@ -71,11 +71,7 @@ class PreguntasInicio : Fragment() {
             startActivity(intencion)
         }
 
-        layoutPegunta.setOnClickListener(){
-            val intencion = Intent(getActivity(), VerPreguntaActivity::class.java)
 
-            startActivity(intencion)
-        }
 
         return vista;
     }
@@ -115,13 +111,12 @@ class PreguntasInicio : Fragment() {
 
                         preguntas.add(pregunta.getValue<Pregunta>() as Pregunta)
                     }
-                    titulo1.text = preguntas[0].titulo
 
                     //Poblar en RecyclerView información usando mi adaptador
-                    /*val recyclerViewRanking: RecyclerView = findViewById(R.id.recyclerViewRanking);
-                    recyclerViewRanking.layoutManager = LinearLayoutManager(this@RankingActivity);
-                    recyclerViewRanking.adapter = RankingAdapter(usuarios);
-                    recyclerViewRanking.setHasFixedSize(true);*/
+                    val recyclerViewRanking: RecyclerView = vista.findViewById(R.id.recyclerViewPreguntas)
+                    recyclerViewRanking.layoutManager = LinearLayoutManager(context);
+                    recyclerViewRanking.adapter = PreguntasAdapter(preguntas);
+                    recyclerViewRanking.setHasFixedSize(true);
                 }
             }
 
@@ -132,4 +127,5 @@ class PreguntasInicio : Fragment() {
         }
         database.addValueEventListener(postListener)
     }
+
 }
