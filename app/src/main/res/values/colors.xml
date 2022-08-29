@@ -10,4 +10,5 @@
     <color name="color_principal">#3B8FF0</color>
     <color name="color_secundario">#6D6A6A</color>
     <color name="color_fondo">#F5F5F5</color>
+    <color name="Boton">#072D4B</color>
 </resources>

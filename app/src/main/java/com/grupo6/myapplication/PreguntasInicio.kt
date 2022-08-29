@@ -36,6 +36,7 @@ class PreguntasInicio : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
     lateinit var bttnPregunta: Button
     lateinit var vista: View
 
@@ -44,6 +45,8 @@ class PreguntasInicio : Fragment() {
         var numRespuestas = 0
         var usuario = ""
         var idPregunta2 = ""
+        var filtraMateria = false
+        var Materia = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +71,6 @@ class PreguntasInicio : Fragment() {
 
         bttnPregunta = vista.findViewById(R.id.bttnAgregar)
 
-        consultarPreguntasRTDB()
         bttnPregunta.setOnClickListener(){
             val intencion = Intent(getActivity(), ActivityAnadirPregunta::class.java)
             startActivity(intencion)
@@ -77,6 +79,17 @@ class PreguntasInicio : Fragment() {
 
 
         return vista;
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (GlobalVars.filtraMateria){
+            println("Filtrando")
+            consultarPreguntasMateriaRTDB(GlobalVars.Materia)
+        }else{
+            println("Nofiltrando")
+            consultarPreguntasRTDB()
+        }
     }
 
     companion object {
@@ -135,6 +148,44 @@ class PreguntasInicio : Fragment() {
                 Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
             }
         }
+        database.addValueEventListener(postListener)
+    }
+
+    fun consultarPreguntasMateriaRTDB(materia: String){
+        val database = Firebase.database.reference
+        val postListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.exists() &&
+                    dataSnapshot.child("preguntas").exists()&&
+                    dataSnapshot.child("preguntas").childrenCount>0
+                ){
+                    var preguntas = ArrayList<Pregunta>()
+                    for (pregunta  in dataSnapshot.child("preguntas").children){
+                        var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
+                        if(preguntaObtenida.materia == materia){
+                            preguntas.add(preguntaObtenida)
+                            println(preguntaObtenida.toString())
+                        }
+                    }
+                    //Poblar en RecyclerView información usando mi adaptador
+                    val recyclerViewRanking: RecyclerView = vista.findViewById(R.id.recyclerViewPreguntas)
+                    recyclerViewRanking.layoutManager = LinearLayoutManager(context);
+                    recyclerViewRanking.adapter = PreguntasAdapter(preguntas);
+                    recyclerViewRanking.setHasFixedSize(true);
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
         database.addValueEventListener(postListener)
     }
 

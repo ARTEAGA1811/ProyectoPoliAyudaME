@@ -27,6 +27,7 @@ class VerPreguntaActivity : AppCompatActivity() {
     lateinit var titulo: TextView
     lateinit var descripcion: TextView
     lateinit var fecha: TextView
+    lateinit var materia: TextView
     lateinit var publicar: Button
     private lateinit var database: DatabaseReference
     var  idPregunta = ""
@@ -59,7 +60,7 @@ class VerPreguntaActivity : AppCompatActivity() {
         titulo = findViewById(R.id.textViewTítulo)
         descripcion = findViewById(R.id.textViewCuerpoPregunta)
         fecha = findViewById(R.id.textViewFechaSubida)
-
+        materia = findViewById(R.id.textViewMateria)
 
 
         supportFragmentManager
@@ -98,6 +99,7 @@ class VerPreguntaActivity : AppCompatActivity() {
                              titulo.text = preguntaObtenida.titulo
                              descripcion.text = preguntaObtenida.descripcion
                              fecha.text = preguntaObtenida.fecha
+                             materia.text = preguntaObtenida.materia
                              consultarRespuestasRTDB(pregunta.key.toString())
                              break
 
@@ -144,6 +146,7 @@ class VerPreguntaActivity : AppCompatActivity() {
                             titulo.text = preguntaObtenida.titulo
                             descripcion.text = preguntaObtenida.descripcion
                             fecha.text = preguntaObtenida.fecha
+                            materia.text = preguntaObtenida.materia
                             consultarRespuestasRTDB(pregunta.key.toString())
                             break
 
@@ -165,6 +168,7 @@ class VerPreguntaActivity : AppCompatActivity() {
         database.addValueEventListener(postListener)
 
     }
+
 
     fun consultarRespuestasRTDB(idPregunta:String){
         val database = Firebase.database.reference
