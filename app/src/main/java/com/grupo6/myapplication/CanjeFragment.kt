@@ -1,22 +1,25 @@
 package com.grupo6.myapplication
 
-import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,8 +35,12 @@ class CanjeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var puntosDisponibles: TextView
+    lateinit var puntosDisponiblesView: TextView
     lateinit var vista: View
+    lateinit var bttnCanjear: Button
+    private var puntos: Int=0
+
+
 
 
 
@@ -59,8 +66,30 @@ class CanjeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         vista = inflater.inflate(R.layout.fragment_canje, container, false)
-        puntosDisponibles=vista.findViewById(R.id.textViewDescripcion)
+        puntosDisponiblesView=vista.findViewById(R.id.textViewDescripcion)
         consultarPuntosUsuario()
+
+
+        bttnCanjear=vista.findViewById(R.id.btnCanjear3)
+        bttnCanjear.setOnClickListener(){
+            var puntosUno= getString(R.string.txtViewsPts2).toInt()
+            if(puntos>=puntosUno){
+                val dialogBuilder = AlertDialog.Builder(activity)
+                dialogBuilder.setTitle("Confirmación de canje")
+                dialogBuilder.setMessage("¿Esta seguro que desea canjear el producto?")
+                dialogBuilder.setPositiveButton("Reclamar", DialogInterface.OnClickListener { _, _ ->
+                    println("Reduccion de puntos")
+                    Toast.makeText(activity,"Canje terminado satisfactoriamente",Toast.LENGTH_LONG).show()
+                })
+                dialogBuilder.setNegativeButton("Mejor no", DialogInterface.OnClickListener { dialog, which ->
+                    //pass
+                })
+                dialogBuilder.create().show()
+
+            }
+
+
+        }
 
         return vista
     }
@@ -99,8 +128,8 @@ class CanjeFragment : Fragment() {
                         var usuarioObtenido = usuario.getValue<Usuario>() as Usuario
                         println(usuarioObtenido.usuario)
                         if(usuarioObtenido.usuario== usuarioLogeado){
-                            puntosDisponibles.setText(usuarioObtenido.puntos.toString())
-
+                            puntosDisponiblesView.setText(usuarioObtenido.puntos.toString())
+                            puntos=usuarioObtenido.puntos
                             }
 
                         }
