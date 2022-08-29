@@ -93,7 +93,7 @@ class VerPreguntaActivity : AppCompatActivity() {
                     for (pregunta  in dataSnapshot.child("preguntas").children){
                         var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
                          if(preguntaObtenida.usuario == usuarioRequerido && preguntaObtenida.titulo == tituloPregunta){
-
+                             PreguntasInicio.GlobalVars.idPregunta2 = preguntaObtenida.idPregunta
                              usuario.text = preguntaObtenida.usuario
                              titulo.text = preguntaObtenida.titulo
                              descripcion.text = preguntaObtenida.descripcion

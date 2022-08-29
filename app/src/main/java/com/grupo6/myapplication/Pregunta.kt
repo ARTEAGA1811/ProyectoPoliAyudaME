@@ -9,7 +9,7 @@ data class Pregunta(var idPregunta: String, var titulo:String,var descripcion:St
 }
 
 fun calculoPreguntas(): Int {
-    PreguntasInicio.GlobalVars.numRespuestas += 1
-    return PreguntasInicio.GlobalVars.numRespuestas
+    PreguntasInicio.GlobalVars.numPreguntas += 1
+    return PreguntasInicio.GlobalVars.numPreguntas
 }
 
