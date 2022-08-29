@@ -1,8 +1,10 @@
 package com.grupo6.myapplication
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,6 +14,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 
 class UsuarioActivity : AppCompatActivity() {
     lateinit var logoP: ImageView
@@ -21,6 +25,10 @@ class UsuarioActivity : AppCompatActivity() {
     lateinit var preguntasContestadas: TextView
     lateinit var premiosObtenidos: TextView
     lateinit var email : TextView
+    lateinit var imagenUsuario: ImageView
+    private val pickImage = 100
+    private var imageUri: Uri? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +40,29 @@ class UsuarioActivity : AppCompatActivity() {
         preguntasContestadas = findViewById(R.id.textViewPerfilPreguntasContestadas)
         premiosObtenidos = findViewById(R.id.textViewPerfilPremiosObtenidos)
         email = findViewById(R .id.textViewPerfilEmail)
+        imagenUsuario = findViewById(R.id.imageViewUsuario)
         consultarUsuarioRTDB(usuarioLogeado)
+
 
         logoP.setOnClickListener {
             val intent = Intent(this, Inicio::class.java)
             startActivity(intent)
         }
+        imagenUsuario.setOnClickListener{
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            startActivityIfNeeded(gallery, pickImage)
+        }
+
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+
+            imagenUsuario.setImageURI(imageUri)
+        }
+    }
+
     fun consultarUsuarioRTDB(usuarioRequerido:String){
         val database = Firebase.database.reference
         val postListener = object : ValueEventListener {
