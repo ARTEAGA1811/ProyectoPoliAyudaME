@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="377dp"
-        android:layout_height="209dp"
+        android:layout_height="262dp"
         android:background="@drawable/cajas_respuestas"
         android:backgroundTint="#FFFFFF">
 
@@ -36,8 +36,7 @@
             android:id="@+id/editTextTextEscribirPregunta"
             android:layout_width="352dp"
             android:layout_height="85dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="8dp"
             android:background="@android:color/transparent"
             android:ems="10"
             android:hint="@string/escribirRespuestaIngreso"
@@ -50,7 +49,6 @@
             android:id="@+id/buttonPublicarPregunta"
             android:layout_width="119dp"
             android:layout_height="35dp"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#F4F9F8"
             android:inputType="textCapSentences"
@@ -61,7 +59,67 @@
             android:text="@string/botonPublicar"
             android:textColor="#000000"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupMateria" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupMateria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.896"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <RadioButton
+                android:id="@+id/radioButtonMate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/matem_tica"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="109dp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFisica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/f_sica"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="109dp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonQuimica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/qu_mica"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="109dp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonGeo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/geometr_a"
+                tools:layout_editor_absoluteX="125dp"
+                tools:layout_editor_absoluteY="109dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/escoga_tipo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextEscribirPregunta" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

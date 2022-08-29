@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -32,6 +33,11 @@ class FragmentEscribirPregunta : Fragment() {
     lateinit var publicar: Button
     lateinit var tituloPregunta: EditText
     lateinit var descriptionPregunta: EditText
+    lateinit var radioButtonMate: RadioButton
+    lateinit var radioButtonQuimica: RadioButton
+    lateinit var radioButtonFisica: RadioButton
+    lateinit var radioButtonGeo: RadioButton
+    lateinit var materia: String
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,12 +57,29 @@ class FragmentEscribirPregunta : Fragment() {
         publicar = vista.findViewById(R.id.buttonPublicarPregunta)
         tituloPregunta = vista.findViewById(R.id.editTextTextTítuloPregunta)
         descriptionPregunta = vista.findViewById(R.id.editTextTextEscribirPregunta)
+        radioButtonMate = vista.findViewById(R.id.radioButtonMate)
+        radioButtonFisica = vista.findViewById(R.id.radioButtonFisica)
+        radioButtonQuimica = vista.findViewById(R.id.radioButtonQuimica)
+        radioButtonGeo = vista.findViewById(R.id.radioButtonGeo)
         database = Firebase.database.reference
 
 
         publicar.setOnClickListener {
             if(!ValidarDatosRequeridos())
                 return@setOnClickListener
+
+            if(radioButtonMate.isChecked){
+                materia = radioButtonMate.text.toString()
+            }
+            if(radioButtonQuimica.isChecked){
+                materia = radioButtonQuimica.text.toString()
+            }
+            if(radioButtonFisica.isChecked){
+                materia = radioButtonFisica.text.toString()
+            }
+            if(radioButtonGeo.isChecked){
+                materia = radioButtonQuimica.text.toString()
+            }
 
             val preguntaNueva = Pregunta();
             val current = LocalDateTime.now()
@@ -68,6 +91,7 @@ class FragmentEscribirPregunta : Fragment() {
             preguntaNueva.descripcion = descriptionPregunta.text.toString()
             preguntaNueva.usuario = PreguntasInicio.GlobalVars.usuario
             preguntaNueva.fecha = formatted
+            preguntaNueva.materia = materia
 
             database.child("preguntas").child(preguntaNueva.idPregunta).setValue(preguntaNueva)
 
