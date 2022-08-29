@@ -14,34 +14,17 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/barra_busqueda3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/p" />
-
-    <EditText
-        android:id="@+id/barra_busqueda3"
-        android:layout_width="250dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/back"
-        android:drawableRight="@drawable/lupa"
-        android:hint="@string/busqueda"
-        android:pointerIcon="cell"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/logoP3"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgUser3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="280dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/miPerfil3"
-        app:layout_constraintStart_toEndOf="@+id/barra_busqueda3"
+        app:layout_constraintStart_toEndOf="@+id/logoP3"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user" />
 
@@ -49,12 +32,12 @@
         android:id="@+id/miPerfil3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        android:text="Mi Perfil"
+        android:text="@string/mi_perfil"
         android:textColor="#072D4B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toEndOf="@+id/imgUser3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,43 +53,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoP3" />
 
-    <EditText
-        android:id="@+id/editTextTextTítuloPregunta"
-        android:layout_width="360dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/insertar_titulo"
-        android:backgroundTint="#F1F1F1"
-        android:ems="10"
-        android:hint="@string/titulo"
-        android:inputType="textPersonName"
-        android:paddingStart="8sp"
-        android:paddingEnd="8sp"
-        android:textColor="#939397"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTtituloAgregarPregunta" />
-
     <TextView
         android:id="@+id/textViewTítuloEscribeTuPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="@string/escribeTuPregunta"
         android:textColor="#072D4B"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextTítuloPregunta" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTtituloAgregarPregunta" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView5"
-        android:layout_width="377sp"
-        android:layout_height="146sp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="379dp"
+        android:layout_height="257dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         app:circularflow_defaultRadius="8sp"

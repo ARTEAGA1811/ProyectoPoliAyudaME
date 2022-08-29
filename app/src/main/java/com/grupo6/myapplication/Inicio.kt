@@ -1,14 +1,14 @@
 package com.grupo6.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-
+import androidx.appcompat.app.AppCompatActivity
 
 
 class Inicio : AppCompatActivity() {
@@ -21,7 +21,14 @@ class Inicio : AppCompatActivity() {
     lateinit var estadoMisRespuestas: ImageView
     lateinit var estadoCanje: ImageView
     lateinit var tvMiPerfil: TextView
+    lateinit var bttnMate: Button
+    lateinit var bttnFisica: Button
+    lateinit var bttnQuimica: Button
+    lateinit var bttnGeo: Button
+    lateinit var bttnTodo: Button
     lateinit var logoP: ImageView
+    lateinit var lupa: ImageView
+    lateinit var busqueda: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +45,26 @@ class Inicio : AppCompatActivity() {
         estadoCanje = findViewById(R.id.imgEstadoCanje)
         tvMiPerfil = findViewById(R.id.miPerfil)
         logoP = findViewById(R.id.logoP)
+        bttnFisica = findViewById(R.id.Física)
+        bttnQuimica = findViewById(R.id.Química)
+        bttnGeo = findViewById(R.id.Geometría)
+        bttnMate = findViewById(R.id.Matemática)
+        bttnTodo = findViewById(R.id.todo)
+        lupa = findViewById(R.id.imageViewLupa2)
+        busqueda = findViewById(R.id.barra_busqueda2)
 
+        pintarBoton()
 
+        val extras = intent.extras ?: return
+        var usuario = extras.getString(EXTRA_LOGIN) ?:"Unknown"
+        usuario = usuario.substringBefore("@")
+        PreguntasInicio.GlobalVars.usuario = usuario
+
+    }
+
+    @SuppressLint("ResourceAsColor")
+    override fun onResume() {
+        super.onResume()
         bttnInicio.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
@@ -101,5 +126,105 @@ class Inicio : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
+        bttnTodo.setOnClickListener{
+            PreguntasInicio.GlobalVars.filtraMateria = false
+            reiniciarActividad()
+        }
+
+        bttnGeo.setOnClickListener {
+            PreguntasInicio.GlobalVars.filtraMateria = true
+            PreguntasInicio.GlobalVars.Materia = "Geometría"
+            reiniciarActividad()
+        }
+
+        bttnMate.setOnClickListener {
+            PreguntasInicio.GlobalVars.filtraMateria = true
+            PreguntasInicio.GlobalVars.Materia = "Matemática"
+            reiniciarActividad()
+        }
+
+        bttnQuimica.setOnClickListener {
+            PreguntasInicio.GlobalVars.filtraMateria = true
+            PreguntasInicio.GlobalVars.Materia = "Química"
+            reiniciarActividad()
+        }
+
+        bttnFisica.setOnClickListener {
+            PreguntasInicio.GlobalVars.filtraMateria = true
+            PreguntasInicio.GlobalVars.Materia = "Física"
+            reiniciarActividad()
+        }
+
+        lupa.setOnClickListener{
+            if(!ValidarDatosRequeridos())
+                return@setOnClickListener
+            PreguntasInicio.GlobalVars.buscado = busqueda.text.toString()
+            PreguntasInicio.GlobalVars.existeBusqueda = true
+            reiniciarActividad()
+        }
+
+
     }
+    private fun ValidarDatosRequeridos():Boolean {
+        val buscado = busqueda.text.toString()
+        if (buscado.isEmpty()) {
+            busqueda.setError("Ingresar una parte del título es obligatorio")
+            busqueda.requestFocus()
+            return false
+        }
+
+        return true
+    }
+
+    fun reiniciarActividad(){
+        val intent = Intent(this, Inicio::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    @SuppressLint("ResourceAsColor")
+    fun reiniciarBotones(){
+        bttnTodo.setBackgroundResource(R.drawable.botones_blancos)
+        bttnTodo.setTextColor(R.color.Boton)
+        bttnGeo.setBackgroundResource(R.drawable.botones_blancos)
+        bttnGeo.setTextColor(R.color.Boton)
+        bttnQuimica.setBackgroundResource(R.drawable.botones_blancos)
+        bttnQuimica.setTextColor(R.color.Boton)
+        bttnFisica.setBackgroundResource(R.drawable.botones_blancos)
+        bttnFisica.setTextColor(R.color.Boton)
+        bttnMate.setBackgroundResource(R.drawable.botones_blancos)
+        bttnMate.setTextColor(R.color.Boton)
+    }
+
+    @SuppressLint("ResourceAsColor")
+    fun pintarBoton(){
+        reiniciarBotones()
+        if(PreguntasInicio.GlobalVars.filtraMateria){
+            when (PreguntasInicio.GlobalVars.Materia){
+                "Geometría" -> {
+                    bttnGeo.setBackgroundResource(R.drawable.botones)
+                    bttnGeo.setTextColor(R.color.white)
+                }
+                "Matemática" -> {
+                    bttnMate.setBackgroundResource(R.drawable.botones)
+                    bttnMate.setTextColor(R.color.white)
+                }
+                "Química" -> {
+                    bttnQuimica.setBackgroundResource(R.drawable.botones)
+                    bttnQuimica.setTextColor(R.color.white)
+                }
+                "Física" -> {
+                    bttnFisica.setBackgroundResource(R.drawable.botones)
+                    bttnFisica.setTextColor(R.color.white)
+                }
+
+            }
+        }else{
+            bttnTodo.setBackgroundResource(R.drawable.botones)
+            bttnTodo.setTextColor(R.color.white)
+        }
+    }
+
 }

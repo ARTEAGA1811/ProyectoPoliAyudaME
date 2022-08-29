@@ -24,7 +24,7 @@
             android:layout_width="105dp"
             android:layout_height="match_parent"
             android:autoSizeTextType="none"
-            android:text="Inicio"
+            android:text="@string/inicio"
             android:textColor="#072D4B"
             android:textSize="8sp" />
 
@@ -33,7 +33,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="105dp"
             android:layout_height="match_parent"
-            android:text="Mis Preguntas"
+            android:text="@string/mis_preguntas"
             android:textColor="#072D4B"
             android:textSize="8sp" />
 
@@ -42,7 +42,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:text="Mis respuestas"
+            android:text="@string/mis_respuestas"
             android:textColor="#072D4B"
             android:textSize="8sp" />
 
@@ -51,7 +51,7 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:text="Canje"
+            android:text="@string/canje"
             android:textColor="#072D4B"
             android:textSize="8sp" />
 
@@ -59,26 +59,25 @@
 
     <EditText
         android:id="@+id/barra_busqueda"
-        android:layout_width="250dp"
-        android:layout_height="23dp"
+        android:layout_width="236dp"
+        android:layout_height="26dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="18dp"
         android:background="@drawable/back"
-        android:drawableRight="@drawable/lupa"
         android:hint="@string/busqueda"
         android:pointerIcon="cell"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/logoP"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/miPerfil"
-        app:layout_constraintStart_toEndOf="@+id/barra_busqueda"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLupa"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user" />
 
@@ -86,10 +85,9 @@
         android:id="@+id/miPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        android:text="Mi Perfil"
+        android:text="@string/mi_perfil"
         android:textColor="#072D4B"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgUser"
@@ -172,7 +170,7 @@
             android:layout_height="25dp"
             android:background="@drawable/botones"
             android:padding="0dp"
-            android:text="Todo"
+            android:text="@string/todo"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="8sp" />
@@ -187,7 +185,7 @@
             android:layout_weight="1"
             android:background="@drawable/botones_blancos"
             android:padding="0dp"
-            android:text="Matemática"
+            android:text="@string/matem_tica"
             android:textAllCaps="false"
             android:textColor="#072D4B"
             android:textSize="8sp" />
@@ -202,7 +200,7 @@
             android:layout_weight="1"
             android:background="@drawable/botones_blancos"
             android:padding="0dp"
-            android:text="Física"
+            android:text="@string/f_sica"
             android:textAllCaps="false"
             android:textColor="#072D4B"
             android:textSize="8sp" />
@@ -217,7 +215,7 @@
             android:layout_weight="1"
             android:background="@drawable/botones_blancos"
             android:padding="0dp"
-            android:text="Química"
+            android:text="@string/qu_mica"
             android:textAllCaps="false"
             android:textColor="#072D4B"
             android:textSize="8sp" />
@@ -232,7 +230,7 @@
             android:layout_weight="1"
             android:background="@drawable/botones_blancos"
             android:padding="0dp"
-            android:text="Geometría"
+            android:text="@string/geometr_a"
             android:textAllCaps="false"
             android:textColor="#072D4B"
             android:textSize="8sp" />
@@ -244,12 +242,23 @@
         android:layout_width="406dp"
         android:layout_height="577dp"
         android:layout_marginStart="3dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <ImageView
+        android:id="@+id/imageViewLupa"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/barra_busqueda"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lupa" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

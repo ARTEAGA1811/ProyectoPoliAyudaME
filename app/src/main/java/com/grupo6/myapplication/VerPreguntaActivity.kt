@@ -4,17 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class VerPreguntaActivity : AppCompatActivity() {
     lateinit var tvMiPerfil: TextView
@@ -23,7 +27,10 @@ class VerPreguntaActivity : AppCompatActivity() {
     lateinit var titulo: TextView
     lateinit var descripcion: TextView
     lateinit var fecha: TextView
-
+    lateinit var materia: TextView
+    lateinit var publicar: Button
+    private lateinit var database: DatabaseReference
+    var  idPregunta = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,17 +54,18 @@ class VerPreguntaActivity : AppCompatActivity() {
             }
         }
 
-
         tvMiPerfil = findViewById(R.id.miPerfil2)
         logoP = findViewById(R.id.logoP2)
         usuario = findViewById(R.id.textViewUsuario)
         titulo = findViewById(R.id.textViewTítulo)
         descripcion = findViewById(R.id.textViewCuerpoPregunta)
         fecha = findViewById(R.id.textViewFechaSubida)
+        materia = findViewById(R.id.textViewMateria)
+
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragmentContainerView4,FragmentResponerPregunta()).commit()
+            .replace(R.id.fragmentContainerViewRespuesta,FragmentResponerPregunta()).commit()
 
         tvMiPerfil.setOnClickListener {
             val intent = Intent(this, UsuarioActivity::class.java)
@@ -70,6 +78,7 @@ class VerPreguntaActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
     fun consultarUsuarioRTDB(usuarioRequerido:String, tituloPregunta:String){
         val database = Firebase.database.reference
@@ -85,11 +94,12 @@ class VerPreguntaActivity : AppCompatActivity() {
                     for (pregunta  in dataSnapshot.child("preguntas").children){
                         var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
                          if(preguntaObtenida.usuario == usuarioRequerido && preguntaObtenida.titulo == tituloPregunta){
-
+                             PreguntasInicio.GlobalVars.idPregunta2 = preguntaObtenida.idPregunta
                              usuario.text = preguntaObtenida.usuario
                              titulo.text = preguntaObtenida.titulo
                              descripcion.text = preguntaObtenida.descripcion
                              fecha.text = preguntaObtenida.fecha
+                             materia.text = preguntaObtenida.materia
                              consultarRespuestasRTDB(pregunta.key.toString())
                              break
 
@@ -131,11 +141,12 @@ class VerPreguntaActivity : AppCompatActivity() {
                         }
 
                         if(preguntaObtenida.idPregunta == idPreguntaRespuesta ){
-
+                            PreguntasInicio.GlobalVars.idPregunta2 = preguntaObtenida.idPregunta
                             usuario.text = preguntaObtenida.usuario
                             titulo.text = preguntaObtenida.titulo
                             descripcion.text = preguntaObtenida.descripcion
                             fecha.text = preguntaObtenida.fecha
+                            materia.text = preguntaObtenida.materia
                             consultarRespuestasRTDB(pregunta.key.toString())
                             break
 
@@ -158,6 +169,7 @@ class VerPreguntaActivity : AppCompatActivity() {
 
     }
 
+
     fun consultarRespuestasRTDB(idPregunta:String){
         val database = Firebase.database.reference
         val postListener = object : ValueEventListener {
@@ -172,10 +184,11 @@ class VerPreguntaActivity : AppCompatActivity() {
                     for (respuesta  in dataSnapshot.child("respuestas").children){
                         respuestas.add(respuesta.getValue<Respuesta>()as Respuesta)
                     }
+                    PreguntasInicio.GlobalVars.numRespuestas = respuestas.size
+                    println(PreguntasInicio.GlobalVars.numRespuestas)
                     var respuestasFilradas  = ArrayList<Respuesta>()
                     for(respuesta in respuestas){
                         if(respuesta.idPregunta == idPregunta){
-
 
                             respuestasFilradas.add(respuesta )
                         }

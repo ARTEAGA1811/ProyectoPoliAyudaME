@@ -62,6 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, Inicio::class.java)
                     usuarioLogeado = auth.currentUser!!.email.toString().substringBefore("@")
                     intent.putExtra(EXTRA_LOGIN, auth.currentUser!!.email)
+                    intent.putExtra(USUARIO, auth.currentUser!!.email)
                     startActivity(intent)
                     //finish()
                 } else {

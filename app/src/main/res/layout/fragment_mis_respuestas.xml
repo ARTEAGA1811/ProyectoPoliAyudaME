@@ -7,32 +7,14 @@
     tools:context=".MisRespuestas">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/bttnOrdenar"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="45dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/botones_blancos"
-            android:padding="0dp"
-            android:text="Ordenar por: R"
-            android:textAllCaps="false"
-            android:textColor="#072D4B"
-            android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="406dp"
+        android:layout_height="577dp">
 
         <Button
             android:id="@+id/bttnAgregar"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="25dp"
-            android:layout_marginStart="268dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="28dp"
             android:layout_weight="1"
@@ -40,24 +22,24 @@
             android:drawableEnd="@drawable/agregar"
             android:drawableTint="#FFFFFF"
             android:padding="0dp"
-            android:text="Pregunta"
+            android:text="@string/pregunta"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="8sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bttnOrdenar"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMisRespuestas"
-            android:layout_width="409dp"
-            android:layout_height="699dp"
+            android:layout_width="408dp"
+            android:layout_height="540dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="1dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bttnOrdenar" />
+            app:layout_constraintTop_toBottomOf="@+id/bttnAgregar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
