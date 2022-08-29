@@ -8,10 +8,18 @@ import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import com.grupo6.myapplication.databinding.ActivityLoginBinding
 import java.util.regex.Pattern
 public  var usuarioLogeado = ""
+        lateinit var  usuarioIngresado : Usuario
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var manejadorArchivo: FileHandler
@@ -19,8 +27,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         manejadorArchivo = SharedPreferencesManager(this)
-
-
 
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -49,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
             GuardarDatosEnPreferencias()
             AutenticarUsuario(email, clave)
 
+
         }
     }
 
@@ -61,6 +68,7 @@ class LoginActivity : AppCompatActivity() {
                     //Si pasa validación de datos requeridos, ir a pantalla principal
                     val intent = Intent(this, Inicio::class.java)
                     usuarioLogeado = auth.currentUser!!.email.toString().substringBefore("@")
+                    consultarUsuarioRTDB(usuarioLogeado)
                     intent.putExtra(EXTRA_LOGIN, auth.currentUser!!.email)
                     intent.putExtra(USUARIO, auth.currentUser!!.email)
                     startActivity(intent)
@@ -124,5 +132,41 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.etUsername.setText ( listadoLeido.first )
         binding.etContra.setText ( listadoLeido.second )
+    }
+
+    fun consultarUsuarioRTDB(usuarioRequerido:String){
+        val database = Firebase.database.reference
+        val postListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.exists() &&
+                    dataSnapshot.child("usuarios").exists()&&
+                    dataSnapshot.child("usuarios").childrenCount>0
+                ){
+
+                    for (usuario  in dataSnapshot.child("usuarios").children){
+                        var usuarioObtenido = usuario.getValue<Usuario>()as Usuario
+                        if(usuarioObtenido.usuario == usuarioRequerido){
+                            usuarioIngresado = usuarioObtenido
+                            break
+
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
     }
 }

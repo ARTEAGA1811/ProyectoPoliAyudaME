@@ -20,6 +20,7 @@ class UsuarioActivity : AppCompatActivity() {
     lateinit var preguntasHechas: TextView
     lateinit var preguntasContestadas: TextView
     lateinit var premiosObtenidos: TextView
+    lateinit var email : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class UsuarioActivity : AppCompatActivity() {
         preguntasHechas = findViewById(R.id.textViewPerfilPreguntasHechas)
         preguntasContestadas = findViewById(R.id.textViewPerfilPreguntasContestadas)
         premiosObtenidos = findViewById(R.id.textViewPerfilPremiosObtenidos)
-
+        email = findViewById(R .id.textViewPerfilEmail)
         consultarUsuarioRTDB(usuarioLogeado)
 
         logoP.setOnClickListener {
@@ -54,6 +55,7 @@ class UsuarioActivity : AppCompatActivity() {
                         if(usuarioObtenido.usuario == usuarioRequerido ){
 
                             usuarioPerfil.text = usuarioObtenido.usuario
+                            email.text = usuarioObtenido.email
                             puntos.text = usuarioObtenido.puntos.toString()
                             preguntasContestadas.text = usuarioObtenido.preguntasContestadas.toString()
                             preguntasHechas.text = usuarioObtenido.preguntasHechas.toString()

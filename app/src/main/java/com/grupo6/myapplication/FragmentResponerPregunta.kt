@@ -73,6 +73,10 @@ class FragmentResponerPregunta : Fragment() {
             respuestaNueva.usuario = PreguntasInicio.GlobalVars.usuario
             respuestaNueva.fecha = formatted
 
+            usuarioIngresado.preguntasContestadas++
+            usuarioIngresado.puntos++
+            database.child("usuarios").child(usuarioLogeado.replace(".","_")).setValue(
+                usuarioIngresado)
             database.child("respuestas").child(respuestaNueva.idRespuesta).setValue(respuestaNueva)
 
             val intent = Intent(getActivity(), Inicio::class.java)

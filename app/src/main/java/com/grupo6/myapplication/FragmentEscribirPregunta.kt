@@ -92,7 +92,9 @@ class FragmentEscribirPregunta : Fragment() {
             preguntaNueva.usuario = PreguntasInicio.GlobalVars.usuario
             preguntaNueva.fecha = formatted
             preguntaNueva.materia = materia
-
+            usuarioIngresado.preguntasHechas++
+            database.child("usuarios").child(usuarioLogeado.replace(".","_")).setValue(
+                usuarioIngresado)
             database.child("preguntas").child(preguntaNueva.idPregunta).setValue(preguntaNueva)
 
             val intent = Intent(getActivity(), Inicio::class.java)

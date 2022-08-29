@@ -94,7 +94,7 @@ class CanjeFragment : Fragment() {
                     dataSnapshot.child("usuarios").exists()&&
                     dataSnapshot.child("usuarios").childrenCount>0
                 ){
-                    var preguntas = ArrayList<Pregunta>()
+
                     for (usuario  in dataSnapshot.child("usuarios").children){
                         var usuarioObtenido = usuario.getValue<Usuario>() as Usuario
                         println(usuarioObtenido.usuario)
