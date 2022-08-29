@@ -45,6 +45,10 @@ class Inicio : AppCompatActivity() {
         usuario = usuario.substringBefore("@")
         PreguntasInicio.GlobalVars.usuario = usuario
 
+    }
+
+    override fun onResume() {
+        super.onResume()
         bttnInicio.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()
@@ -105,6 +109,5 @@ class Inicio : AppCompatActivity() {
             val intent = Intent(this, UsuarioActivity::class.java)
             startActivity(intent)
         }
-
     }
 }

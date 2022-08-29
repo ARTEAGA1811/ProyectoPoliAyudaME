@@ -53,7 +53,6 @@ class VerPreguntaActivity : AppCompatActivity() {
             }
         }
 
-
         tvMiPerfil = findViewById(R.id.miPerfil2)
         logoP = findViewById(R.id.logoP2)
         usuario = findViewById(R.id.textViewUsuario)
@@ -78,6 +77,7 @@ class VerPreguntaActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
     fun consultarUsuarioRTDB(usuarioRequerido:String, tituloPregunta:String){
         val database = Firebase.database.reference

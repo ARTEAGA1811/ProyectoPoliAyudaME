@@ -61,4 +61,14 @@
     <string name="textView">200 pts</string>
     <string name="txtViewsPts">200 pts</string>
     <string name="btnCanjear">Canjear</string>
+    <string name="inicio">Inicio</string>
+    <string name="mis_preguntas">Mis Preguntas</string>
+    <string name="mis_respuestas">Mis respuestas</string>
+    <string name="canje">Canje</string>
+    <string name="mi_perfil">Mi Perfil</string>
+    <string name="todo">Todo</string>
+    <string name="matem_tica">Matemática</string>
+    <string name="f_sica">Física</string>
+    <string name="qu_mica">Química</string>
+    <string name="geometr_a">Geometría</string>
 </resources>

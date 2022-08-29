@@ -18,28 +18,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/p" />
 
-    <EditText
-        android:id="@+id/barra_busqueda2"
-        android:layout_width="250dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/back"
-        android:drawableRight="@drawable/lupa"
-        android:hint="@string/busqueda"
-        android:pointerIcon="cell"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/logoP2"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imgUser2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="284dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/miPerfil2"
-        app:layout_constraintStart_toEndOf="@+id/barra_busqueda2"
+        app:layout_constraintStart_toEndOf="@+id/logoP2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user" />
 
@@ -47,12 +32,12 @@
         android:id="@+id/miPerfil2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="16dp"
         android:text="Mi Perfil"
         android:textColor="#072D4B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imgUser2"
         app:layout_constraintTop_toTopOf="parent" />
 

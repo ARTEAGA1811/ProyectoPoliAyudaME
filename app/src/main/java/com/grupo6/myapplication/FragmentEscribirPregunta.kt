@@ -55,6 +55,9 @@ class FragmentEscribirPregunta : Fragment() {
 
 
         publicar.setOnClickListener {
+            if(!ValidarDatosRequeridos())
+                return@setOnClickListener
+
             val preguntaNueva = Pregunta();
             val current = LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -72,6 +75,25 @@ class FragmentEscribirPregunta : Fragment() {
             startActivity(intent)
         }
             return vista
+    }
+
+    private fun ValidarDatosRequeridos():Boolean {
+        val titulo = tituloPregunta.text.toString()
+        val descripcion = descriptionPregunta.text.toString()
+        if (titulo.isEmpty()) {
+            tituloPregunta.setError("El título es obligatorio")
+            tituloPregunta.requestFocus()
+            return false
+        }
+
+
+        if (descripcion.isEmpty()) {
+            descriptionPregunta.setError("La descripcion es obligatoria")
+            descriptionPregunta.requestFocus()
+            return false
+
+        }
+        return true
     }
 
 

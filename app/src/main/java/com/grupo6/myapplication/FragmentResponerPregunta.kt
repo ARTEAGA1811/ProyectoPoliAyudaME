@@ -2,6 +2,7 @@ package com.grupo6.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.regex.Pattern
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +59,9 @@ class FragmentResponerPregunta : Fragment() {
 
 
         publicar.setOnClickListener{
+            if(!ValidarDatosRequeridos())
+                return@setOnClickListener
+
             val respuestaNueva = Respuesta();
             val current = LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -72,9 +77,28 @@ class FragmentResponerPregunta : Fragment() {
 
             val intent = Intent(getActivity(), Inicio::class.java)
             startActivity(intent)
+
         }
 
         return vista
+    }
+    private fun ValidarDatosRequeridos():Boolean {
+        val titulo = tituloRespuesta.text.toString()
+        val descripcion = descriptionRespuesta.text.toString()
+        if (titulo.isEmpty()) {
+            tituloRespuesta.setError("El título es obligatorio")
+            tituloRespuesta.requestFocus()
+            return false
+        }
+
+
+        if (descripcion.isEmpty()) {
+            descriptionRespuesta.setError("La descripcion es obligatoria")
+            descriptionRespuesta.requestFocus()
+            return false
+
+        }
+        return true
     }
 
     companion object {
