@@ -59,26 +59,25 @@
 
     <EditText
         android:id="@+id/barra_busqueda"
-        android:layout_width="250dp"
-        android:layout_height="23dp"
+        android:layout_width="236dp"
+        android:layout_height="26dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="18dp"
         android:background="@drawable/back"
-        android:drawableRight="@drawable/lupa"
         android:hint="@string/busqueda"
         android:pointerIcon="cell"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/logoP"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/imgUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/miPerfil"
-        app:layout_constraintStart_toEndOf="@+id/barra_busqueda"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLupa"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/user" />
 
@@ -86,7 +85,6 @@
         android:id="@+id/miPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
         android:text="@string/mi_perfil"
@@ -250,6 +248,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <ImageView
+        android:id="@+id/imageViewLupa"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/barra_busqueda"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lupa" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

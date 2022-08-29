@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,8 @@ class Inicio : AppCompatActivity() {
     lateinit var bttnGeo: Button
     lateinit var bttnTodo: Button
     lateinit var logoP: ImageView
+    lateinit var lupa: ImageView
+    lateinit var busqueda: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,8 @@ class Inicio : AppCompatActivity() {
         bttnGeo = findViewById(R.id.Geometría)
         bttnMate = findViewById(R.id.Matemática)
         bttnTodo = findViewById(R.id.todo)
+        lupa = findViewById(R.id.imageViewLupa2)
+        busqueda = findViewById(R.id.barra_busqueda2)
 
         pintarBoton()
 
@@ -152,8 +157,27 @@ class Inicio : AppCompatActivity() {
             reiniciarActividad()
         }
 
+        lupa.setOnClickListener{
+            if(!ValidarDatosRequeridos())
+                return@setOnClickListener
+            PreguntasInicio.GlobalVars.buscado = busqueda.text.toString()
+            PreguntasInicio.GlobalVars.existeBusqueda = true
+            reiniciarActividad()
+        }
+
 
     }
+    private fun ValidarDatosRequeridos():Boolean {
+        val buscado = busqueda.text.toString()
+        if (buscado.isEmpty()) {
+            busqueda.setError("Ingresar una parte del título es obligatorio")
+            busqueda.requestFocus()
+            return false
+        }
+
+        return true
+    }
+
     fun reiniciarActividad(){
         val intent = Intent(this, Inicio::class.java)
         startActivity(intent)

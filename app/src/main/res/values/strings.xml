@@ -72,4 +72,5 @@
     <string name="qu_mica">Química</string>
     <string name="geometr_a">Geometría</string>
     <string name="escoga_tipo">Escoga la materia de la pregunta.</string>
+    <string name="pregunta">Pregunta</string>
 </resources>
