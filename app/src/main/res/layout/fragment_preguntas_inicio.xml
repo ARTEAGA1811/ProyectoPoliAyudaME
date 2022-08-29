@@ -2,13 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="406dp"
+    android:layout_height="577dp"
     tools:context=".PreguntasInicio">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="406dp"
+        android:layout_height="577dp">
 
         <Button
             android:id="@+id/bttnFiltrar"
@@ -51,15 +51,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewPreguntas"
             android:layout_width="408dp"
-            android:layout_height="679dp"
+            android:layout_height="540dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="22dp"
             android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bttnFiltrar" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
