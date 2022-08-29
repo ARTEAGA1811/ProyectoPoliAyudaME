@@ -22,7 +22,7 @@
             android:drawableEnd="@drawable/agregar"
             android:drawableTint="#FFFFFF"
             android:padding="0dp"
-            android:text="Pregunta"
+            android:text="@string/pregunta"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="8sp"

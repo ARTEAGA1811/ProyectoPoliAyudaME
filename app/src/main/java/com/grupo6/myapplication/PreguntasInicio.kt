@@ -21,6 +21,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
+import java.util.regex.Pattern
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +48,8 @@ class PreguntasInicio : Fragment() {
         var idPregunta2 = ""
         var filtraMateria = false
         var Materia = ""
+        var existeBusqueda = false
+        var buscado = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,10 +87,11 @@ class PreguntasInicio : Fragment() {
     override fun onResume() {
         super.onResume()
         if (GlobalVars.filtraMateria){
-            println("Filtrando")
             consultarPreguntasMateriaRTDB(GlobalVars.Materia)
+        }else if (GlobalVars.existeBusqueda){
+            consultarPreguntasBusquedRTDB(GlobalVars.buscado)
+            GlobalVars.existeBusqueda = false
         }else{
-            println("Nofiltrando")
             consultarPreguntasRTDB()
         }
     }
@@ -189,4 +193,44 @@ class PreguntasInicio : Fragment() {
         database.addValueEventListener(postListener)
     }
 
+    fun consultarPreguntasBusquedRTDB(busqueda: String){
+        val database = Firebase.database.reference
+        val pattern = busqueda.toRegex()
+        val postListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.exists() &&
+                    dataSnapshot.child("preguntas").exists()&&
+                    dataSnapshot.child("preguntas").childrenCount>0
+                ){
+                    var preguntas = ArrayList<Pregunta>()
+                    for (pregunta  in dataSnapshot.child("preguntas").children){
+                        var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
+                        if(pattern.containsMatchIn(preguntaObtenida.titulo)){
+                            preguntas.add(preguntaObtenida)
+                            println(preguntaObtenida.toString())
+                        }
+                    }
+                    //Poblar en RecyclerView información usando mi adaptador
+                    val recyclerViewRanking: RecyclerView = vista.findViewById(R.id.recyclerViewPreguntas)
+                    recyclerViewRanking.layoutManager = LinearLayoutManager(context);
+                    recyclerViewRanking.adapter = PreguntasAdapter(preguntas);
+                    recyclerViewRanking.setHasFixedSize(true);
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
+        database.addValueEventListener(postListener)
+    }
+
 }
+
