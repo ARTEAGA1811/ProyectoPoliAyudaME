@@ -11,7 +11,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.grupo6.myapplication.databinding.ActivityLoginBinding
 import java.util.regex.Pattern
-
+public  var usuarioLogeado = ""
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var manejadorArchivo: FileHandler
@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
 
                     //Si pasa validación de datos requeridos, ir a pantalla principal
                     val intent = Intent(this, Inicio::class.java)
-
+                    usuarioLogeado = auth.currentUser!!.email.toString().substringBefore("@")
                     intent.putExtra(EXTRA_LOGIN, auth.currentUser!!.email)
                     startActivity(intent)
                     //finish()

@@ -56,12 +56,14 @@ class RespuestasAdapter(private val dataSet: ArrayList<Respuesta>) : RecyclerVie
             holder.textViewUsuario.text = dataSet[position-1].usuario
             holder.textViewFecha.text = dataSet[position-1].fecha
 
-            /*holder.linearLayoutPregunta.setOnClickListener{
+            holder.linearLayoutPregunta.setOnClickListener{
 
                 val intencion = Intent(holder.textViewTitulo.context, VerPreguntaActivity::class.java)
-                intencion.putExtra("usuario", holder.textViewUsuario.text)
+
+                intencion.putExtra("idPregunta",dataSet[position-1].idPregunta)
+                intencion.putExtra("esRespuesta", "true")
                 holder.textViewTitulo.context.startActivity(intencion)
-            }*/
+            }
 
         }
 
