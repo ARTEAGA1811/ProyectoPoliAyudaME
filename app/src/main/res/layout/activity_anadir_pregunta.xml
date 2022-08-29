@@ -70,41 +70,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoP3" />
 
-    <EditText
-        android:id="@+id/editTextTextTítuloPregunta"
-        android:layout_width="360dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/insertar_titulo"
-        android:backgroundTint="#F1F1F1"
-        android:ems="10"
-        android:hint="@string/titulo"
-        android:inputType="textPersonName"
-        android:paddingStart="8sp"
-        android:paddingEnd="8sp"
-        android:textColor="#939397"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTtituloAgregarPregunta" />
-
     <TextView
         android:id="@+id/textViewTítuloEscribeTuPregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="@string/escribeTuPregunta"
         android:textColor="#072D4B"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextTítuloPregunta" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTtituloAgregarPregunta" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView5"
-        android:layout_width="377sp"
-        android:layout_height="146sp"
+        android:layout_width="381dp"
+        android:layout_height="215dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:background="#FFFFFF"

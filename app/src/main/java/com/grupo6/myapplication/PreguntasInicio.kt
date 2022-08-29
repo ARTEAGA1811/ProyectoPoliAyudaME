@@ -43,6 +43,13 @@ class PreguntasInicio : Fragment() {
     lateinit var recyclerViewPregunta: RecyclerView
     lateinit var pregunta: TextView
 
+    object GlobalVars {
+        var numPreguntas = 0
+        var numRespuestas = 0
+        var usuario = ""
+        var idPregunta2 = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         super.onCreate(savedInstanceState)
@@ -115,6 +122,9 @@ class PreguntasInicio : Fragment() {
                         }
                         preguntas.add(preguntaFinal)
                     }
+
+                    GlobalVars.numPreguntas = preguntas.size
+
 
                     //Poblar en RecyclerView información usando mi adaptador
                     val recyclerViewRanking: RecyclerView = vista.findViewById(R.id.recyclerViewPreguntas)

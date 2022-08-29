@@ -35,6 +35,12 @@ class Inicio : AppCompatActivity() {
         tvMiPerfil = findViewById(R.id.miPerfil)
         logoP = findViewById(R.id.logoP)
 
+
+        val extras = intent.extras ?: return
+        var usuario = extras.getString(EXTRA_LOGIN) ?:"Unknown"
+        usuario = usuario.substringBefore("@")
+        PreguntasInicio.GlobalVars.usuario = usuario
+
         bttnInicio.setOnClickListener {
             supportFragmentManager
                 .beginTransaction()

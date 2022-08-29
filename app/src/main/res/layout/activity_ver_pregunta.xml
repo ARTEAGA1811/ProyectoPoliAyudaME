@@ -122,17 +122,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView4"
-        android:layout_width="361dp"
-        android:layout_height="145dp"
+        android:id="@+id/fragmentContainerViewRespuesta"
+        android:layout_width="374dp"
+        android:layout_height="211dp"
         android:layout_marginStart="31dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         app:circularflow_defaultRadius="8sp"
         app:circularflow_radiusInDP="8sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEscribirRespuesta"
         tools:layout="@layout/fragment_responer_pregunta">
@@ -144,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="@string/escribirRespuesta"
         android:textColor="#072D4B"
         android:textSize="17sp"
@@ -161,15 +162,16 @@
         android:textColor="#072D4B"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView4" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerViewRespuesta" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRespuestas"
-        android:layout_width="391dp"
-        android:layout_height="237dp"
+        android:layout_width="393dp"
+        android:layout_height="186dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
