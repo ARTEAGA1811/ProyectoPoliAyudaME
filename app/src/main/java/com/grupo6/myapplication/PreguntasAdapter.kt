@@ -60,6 +60,8 @@ class PreguntasAdapter(private val dataSet: ArrayList<Pregunta>) : RecyclerView.
 
                 val intencion = Intent(holder.textViewTitulo.context, VerPreguntaActivity::class.java)
                 intencion.putExtra("usuario", holder.textViewUsuario.text)
+                intencion.putExtra("titulo", holder.textViewTitulo.text)
+                intencion.putExtra("esRespuesta", "false")
                 holder.textViewTitulo.context.startActivity(intencion)
             }
 

@@ -37,11 +37,7 @@ class PreguntasInicio : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var bttnPregunta: Button
-    lateinit var layoutPegunta: LinearLayout
     lateinit var vista: View
-    lateinit var titulo1: TextView
-    lateinit var recyclerViewPregunta: RecyclerView
-    lateinit var pregunta: TextView
 
     object GlobalVars {
         var numPreguntas = 0

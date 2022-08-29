@@ -33,13 +33,26 @@ class VerPreguntaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val profileName=intent. getStringExtra("usuario")
-        setContentView(R.layout.activity_ver_pregunta)
+        val profileName = intent. getStringExtra("usuario")
+        val tituloPregunta = intent. getStringExtra("titulo")
+        val idPregunta = intent. getStringExtra("idPregunta")
+        var esRespuesta = intent.getStringExtra("esRespuesta")
 
-        if (profileName != null) {
-            consultarUsuarioRTDB(profileName)
+        setContentView(R.layout.activity_ver_pregunta)
+        if(esRespuesta == "true"){
+            println(esRespuesta)
             println(idPregunta)
+            if (idPregunta != null) {
+                consultarPreguntaRTDB(idPregunta)
+            }
+        }else{
+            println(esRespuesta)
+            if (profileName != null && tituloPregunta != null) {
+                consultarUsuarioRTDB(profileName,tituloPregunta)
+
+            }
         }
+
 
         tvMiPerfil = findViewById(R.id.miPerfil2)
         logoP = findViewById(R.id.logoP2)
@@ -64,12 +77,9 @@ class VerPreguntaActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
-
     }
 
-    fun consultarUsuarioRTDB(usuarioRequerido:String){
+    fun consultarUsuarioRTDB(usuarioRequerido:String, tituloPregunta:String){
         val database = Firebase.database.reference
         val postListener = object : ValueEventListener {
 
@@ -82,8 +92,8 @@ class VerPreguntaActivity : AppCompatActivity() {
 
                     for (pregunta  in dataSnapshot.child("preguntas").children){
                         var preguntaObtenida = pregunta.getValue<Pregunta>()as Pregunta
-                         if(preguntaObtenida.usuario == usuarioRequerido){
-                             PreguntasInicio.GlobalVars.idPregunta2 = preguntaObtenida.idPregunta
+                         if(preguntaObtenida.usuario == usuarioRequerido && preguntaObtenida.titulo == tituloPregunta){
+
                              usuario.text = preguntaObtenida.usuario
                              titulo.text = preguntaObtenida.titulo
                              descripcion.text = preguntaObtenida.descripcion
@@ -109,6 +119,53 @@ class VerPreguntaActivity : AppCompatActivity() {
         database.addValueEventListener(postListener)
 
     }
+    fun consultarPreguntaRTDB(idPreguntaRespuesta: String){
+        val database = Firebase.database.reference
+        val postListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.exists() &&
+                    dataSnapshot.child("preguntas").exists()&&
+                    dataSnapshot.child("preguntas").childrenCount>0
+                ){
+
+                    for (pregunta  in dataSnapshot.child("preguntas").children){
+                        var idPregunta = pregunta.key
+                        println(idPregunta)
+                        var preguntaObtenida = pregunta.getValue<Pregunta>() as Pregunta
+                        if (idPregunta != null) {
+                            preguntaObtenida.idPregunta = idPregunta
+                        }
+
+                        if(preguntaObtenida.idPregunta == idPreguntaRespuesta ){
+                            PreguntasInicio.GlobalVars.idPregunta2 = preguntaObtenida.idPregunta
+                            usuario.text = preguntaObtenida.usuario
+                            titulo.text = preguntaObtenida.titulo
+                            descripcion.text = preguntaObtenida.descripcion
+                            fecha.text = preguntaObtenida.fecha
+                            consultarRespuestasRTDB(pregunta.key.toString())
+                            break
+
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(EXTRA_LOGIN, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+
+        database.addValueEventListener(postListener)
+
+    }
+
     fun consultarRespuestasRTDB(idPregunta:String){
         val database = Firebase.database.reference
         val postListener = object : ValueEventListener {

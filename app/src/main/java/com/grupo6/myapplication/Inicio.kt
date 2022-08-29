@@ -7,6 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+
+
 
 class Inicio : AppCompatActivity() {
     lateinit var bttnInicio:Button
@@ -19,6 +22,7 @@ class Inicio : AppCompatActivity() {
     lateinit var estadoCanje: ImageView
     lateinit var tvMiPerfil: TextView
     lateinit var logoP: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -75,6 +79,7 @@ class Inicio : AppCompatActivity() {
         }
 
         bttnMisPreguntas.setOnClickListener {
+
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragmentContainerView,MisPreguntas()).commit()
