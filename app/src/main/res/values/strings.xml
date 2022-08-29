@@ -59,7 +59,9 @@
     <string name="txtViewPuntosDisponibles">Puntos Disponibles</string>
     <string name="textViewCuadernosFEPON">Cuadernos FEPON</string>
     <string name="textView">200 pts</string>
-    <string name="txtViewsPts">200 pts</string>
+    <string name="txtViewsPts1">200</string>
+    <string name="txtViewsPts2">3</string>
+    <string name="txtViewsPts3">10</string>
     <string name="btnCanjear">Canjear</string>
     <string name="inicio">Inicio</string>
     <string name="mis_preguntas">Mis Preguntas</string>
@@ -73,4 +75,5 @@
     <string name="geometr_a">Geometría</string>
     <string name="escoga_tipo">Escoga la materia de la pregunta.</string>
     <string name="pregunta">Pregunta</string>
+    <string name="reclamado">Reclamado con exito</string>
 </resources>
