@@ -19,6 +19,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         manejadorArchivo = SharedPreferencesManager(this)
+
+
+
         // Initialize Firebase Auth
         auth = Firebase.auth
 
@@ -26,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        LeerDatosDePreferencias()
 
         //Cambio de pantalla a la pantalla de registro
         binding.btnRegistrarse.setOnClickListener{
@@ -110,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
         }
         manejadorArchivo.SaveInformation(listadoAGrabar)
     }
+
     private fun LeerDatosDePreferencias(){
         val listadoLeido = manejadorArchivo.ReadInformation()
         if(listadoLeido.first != null){
