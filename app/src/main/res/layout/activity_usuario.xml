@@ -12,13 +12,13 @@
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPerfilUsuario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/p" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewPerfilUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -36,7 +36,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toEndOf="@+id/logoP4"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPerfilUsuario"
         app:srcCompat="@drawable/ic_baseline_person_pin_24" />
 
     <LinearLayout
@@ -116,7 +116,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
@@ -126,7 +125,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/textViewPerfilPuntos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -148,7 +147,6 @@
         app:layout_constraintStart_toEndOf="@+id/linearLayout6">
 
         <TextView
-            android:id="@+id/textView19"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/textviewPreguntasHechas"
@@ -156,7 +154,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/textViewPerfilPreguntasHechas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -178,7 +176,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView21"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/textViewPreguntasContestadas"
@@ -186,7 +183,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/textViewPerfilPreguntasContestadas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -207,7 +204,6 @@
         app:layout_constraintStart_toEndOf="@+id/linearLayout8">
 
         <TextView
-            android:id="@+id/textView23"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txtViewPremiosObtenidos"
@@ -215,7 +211,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/textViewPerfilPremiosObtenidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
