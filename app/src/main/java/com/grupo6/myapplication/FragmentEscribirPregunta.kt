@@ -78,7 +78,7 @@ class FragmentEscribirPregunta : Fragment() {
                 materia = radioButtonFisica.text.toString()
             }
             if(radioButtonGeo.isChecked){
-                materia = radioButtonQuimica.text.toString()
+                materia = radioButtonGeo.text.toString()
             }
 
             val preguntaNueva = Pregunta();

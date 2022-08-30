@@ -79,8 +79,11 @@ class FragmentResponerPregunta : Fragment() {
                 usuarioIngresado)
             database.child("respuestas").child(respuestaNueva.idRespuesta).setValue(respuestaNueva)
 
-            val intent = Intent(getActivity(), Inicio::class.java)
-            startActivity(intent)
+            /*val intent = Intent(getActivity(), Inicio::class.java)
+            startActivity(intent)*/
+
+            tituloRespuesta.setText("")
+            descriptionRespuesta.setText("")
 
         }
 
