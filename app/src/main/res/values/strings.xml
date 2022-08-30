@@ -58,10 +58,12 @@
     <string name="txtValorPreguntasRespondidas">5</string>
     <string name="txtViewPuntosDisponibles">Puntos Disponibles</string>
     <string name="textViewCuadernosFEPON">Cuadernos FEPON</string>
+    <string name="textViewCuadernosFEPONU">PolyStyle FEPON</string>
+    <string name="textViewCuadernosFEPONA">Billard FEPON</string>
     <string name="textView">200 pts</string>
     <string name="txtViewsPts1">200</string>
-    <string name="txtViewsPts2">3</string>
-    <string name="txtViewsPts3">10</string>
+    <string name="txtViewsPts2">150</string>
+    <string name="txtViewsPts3">100</string>
     <string name="btnCanjear">Canjear</string>
     <string name="inicio">Inicio</string>
     <string name="mis_preguntas">Mis Preguntas</string>

@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
@@ -38,7 +39,10 @@ class CanjeFragment : Fragment() {
     lateinit var puntosDisponiblesView: TextView
     lateinit var vista: View
     lateinit var bttnCanjear: Button
+    lateinit var bttnCanjearDos: Button
+    lateinit var bttnCanjearTres: Button
     private var puntos: Int=0
+    private lateinit var database: DatabaseReference
 
 
 
@@ -48,9 +52,7 @@ class CanjeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         getActivity()?.getWindow()?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         super.onCreate(savedInstanceState)
-
-
-
+        database = Firebase.database.reference
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -79,6 +81,9 @@ class CanjeFragment : Fragment() {
                 dialogBuilder.setMessage("¿Esta seguro que desea canjear el producto?")
                 dialogBuilder.setPositiveButton("Reclamar", DialogInterface.OnClickListener { _, _ ->
                     println("Reduccion de puntos")
+                    usuarioIngresado.puntos-=puntosUno
+                    puntosDisponiblesView.setText(usuarioIngresado.puntos.toString())
+                    database.child("usuarios").child(usuarioLogeado.replace(".","_")).setValue(usuarioIngresado)
                     Toast.makeText(activity,"Canje terminado satisfactoriamente",Toast.LENGTH_LONG).show()
                 })
                 dialogBuilder.setNegativeButton("Mejor no", DialogInterface.OnClickListener { dialog, which ->
@@ -87,8 +92,60 @@ class CanjeFragment : Fragment() {
                 dialogBuilder.create().show()
 
             }
+            else{
+                Toast.makeText(activity,"No dispone de puntos suficientes",Toast.LENGTH_LONG).show()
+            }
 
 
+
+        }
+        bttnCanjearDos=vista.findViewById(R.id.btnCanjear)
+        bttnCanjearDos.setOnClickListener(){
+            var puntosDos= getString(R.string.txtViewsPts1).toInt()
+            if(puntos>=puntosDos){
+                val dialogBuilder = AlertDialog.Builder(activity)
+                dialogBuilder.setTitle("Confirmación de canje")
+                dialogBuilder.setMessage("¿Esta seguro que desea canjear el producto?")
+                dialogBuilder.setPositiveButton("Reclamar", DialogInterface.OnClickListener { _, _ ->
+                    println("Reduccion de puntos")
+                    usuarioIngresado.puntos-=puntosDos
+                    puntosDisponiblesView.setText(usuarioIngresado.puntos.toString())
+                    database.child("usuarios").child(usuarioLogeado.replace(".","_")).setValue(usuarioIngresado)
+                    Toast.makeText(activity,"Canje terminado satisfactoriamente",Toast.LENGTH_LONG).show()
+                })
+                dialogBuilder.setNegativeButton("Mejor no", DialogInterface.OnClickListener { dialog, which ->
+                    //pass
+                })
+                dialogBuilder.create().show()
+
+            }
+            else{
+                Toast.makeText(activity,"No dispone de puntos suficientes",Toast.LENGTH_LONG).show()
+            }
+        }
+        bttnCanjearTres=vista.findViewById(R.id.btnCanjear2)
+        bttnCanjearTres.setOnClickListener(){
+            var puntosTres= getString(R.string.txtViewsPts3).toInt()
+            if(puntos>=puntosTres){
+                val dialogBuilder = AlertDialog.Builder(activity)
+                dialogBuilder.setTitle("Confirmación de canje")
+                dialogBuilder.setMessage("¿Esta seguro que desea canjear el producto?")
+                dialogBuilder.setPositiveButton("Reclamar", DialogInterface.OnClickListener { _, _ ->
+                    println("Reduccion de puntos")
+                    usuarioIngresado.puntos-=puntosTres
+                    puntosDisponiblesView.setText(usuarioIngresado.puntos.toString())
+                    database.child("usuarios").child(usuarioLogeado.replace(".","_")).setValue(usuarioIngresado)
+                    Toast.makeText(activity,"Canje terminado satisfactoriamente",Toast.LENGTH_LONG).show()
+                })
+                dialogBuilder.setNegativeButton("Mejor no", DialogInterface.OnClickListener { dialog, which ->
+                    //pass
+                })
+                dialogBuilder.create().show()
+
+            }
+            else{
+                Toast.makeText(activity,"No dispone de puntos suficientes",Toast.LENGTH_LONG).show()
+            }
         }
 
         return vista
@@ -129,6 +186,7 @@ class CanjeFragment : Fragment() {
                         println(usuarioObtenido.usuario)
                         if(usuarioObtenido.usuario== usuarioLogeado){
                             puntosDisponiblesView.setText(usuarioObtenido.puntos.toString())
+                            usuarioIngresado.puntos=usuarioObtenido.puntos
                             puntos=usuarioObtenido.puntos
                             }
 

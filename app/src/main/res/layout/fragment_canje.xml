@@ -13,9 +13,8 @@
         <LinearLayout
             android:id="@+id/pregunta1"
             android:layout_width="167dp"
-            android:layout_height="184dp"
+            android:layout_height="160dp"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="50dp"
             android:background="@drawable/cajas_respuestas"
             android:orientation="vertical"
@@ -42,7 +41,7 @@
                 android:text="@string/txtPreguntasValor"
                 android:textAlignment="center"
                 android:textColor="#81072D4B"
-                android:textSize="60sp" />
+                android:textSize="48sp" />
 
         </LinearLayout>
 
@@ -51,7 +50,7 @@
             android:layout_width="400dp"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/cajas_respuestas"
             android:orientation="vertical"
@@ -69,7 +68,7 @@
                     android:id="@+id/imageView5"
                     android:layout_width="56dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/cuadernos__1_" />
+                    android:src="@drawable/polystyle" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="19dp"
                         android:layout_margin="10dp"
-                        android:text="@string/textViewCuadernosFEPON"
+                        android:text="@string/textViewCuadernosFEPONU"
                         android:textColor="#072D4B"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -97,7 +96,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="25dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginRight="70dp"
+                            android:layout_marginRight="5dp"
                             android:text="@string/txtViewsPts1"
                             android:textColor="#81072D4B" />
 
@@ -105,9 +104,8 @@
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginLeft="0dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginEnd="70dp"
                             android:layout_weight="1"
                             android:text="pts" />
 
@@ -116,6 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
+                            android:layout_marginRight="40dp"
                             android:layout_weight="0"
                             android:background="@drawable/botones"
                             android:text="@string/btnCanjear"
@@ -134,7 +133,7 @@
             android:id="@+id/canje2"
             android:layout_width="400dp"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/cajas_respuestas"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +150,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="56dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/cuadernos__1_" />
+                    android:src="@drawable/billard" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,7 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="19dp"
                         android:layout_margin="10dp"
-                        android:text="@string/textViewCuadernosFEPON"
+                        android:text="@string/textViewCuadernosFEPONA"
                         android:textColor="#072D4B"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -179,7 +178,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="25dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginRight="70dp"
+                            android:layout_marginRight="5dp"
                             android:text="@string/txtViewsPts3"
                             android:textColor="#81072D4B" />
 
@@ -187,9 +186,8 @@
                             android:id="@+id/textView7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginLeft="0dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginEnd="70dp"
                             android:layout_weight="1"
                             android:text="pts"
                             android:textAlignment="viewStart" />
@@ -199,6 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
+                            android:layout_marginRight="40dp"
                             android:layout_weight="0"
                             android:background="@drawable/botones"
                             android:text="@string/btnCanjear"
@@ -217,7 +216,7 @@
             android:id="@+id/canje3"
             android:layout_width="400dp"
             android:layout_height="0dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/cajas_respuestas"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@+id/canje4"
@@ -262,7 +261,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="25dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginRight="70dp"
+                            android:layout_marginRight="5dp"
                             android:text="@string/txtViewsPts2"
                             android:textColor="#81072D4B" />
 
@@ -270,9 +269,8 @@
                             android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="25dp"
+                            android:layout_marginLeft="0dp"
                             android:layout_marginTop="10dp"
-                            android:layout_marginEnd="70dp"
                             android:layout_weight="1"
                             android:text="pts" />
 
@@ -281,6 +279,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
+                            android:layout_marginRight="40dp"
                             android:layout_weight="0"
                             android:background="@drawable/botones"
                             android:text="@string/btnCanjear"
