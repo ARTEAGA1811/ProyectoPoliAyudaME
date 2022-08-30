@@ -7,32 +7,14 @@
     tools:context=".MisPreguntas">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/bttnOrdenar"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="45dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/botones_blancos"
-            android:padding="0dp"
-            android:text="Ordenar por:"
-            android:textAllCaps="false"
-            android:textColor="#072D4B"
-            android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="406dp"
+        android:layout_height="577dp">
 
         <Button
             android:id="@+id/bttnAgregar"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
             android:layout_height="25dp"
-            android:layout_marginStart="268dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="28dp"
             android:layout_weight="1"
@@ -40,175 +22,24 @@
             android:drawableEnd="@drawable/agregar"
             android:drawableTint="#FFFFFF"
             android:padding="0dp"
-            android:text="Pregunta"
+            android:text="@string/pregunta"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="8sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bttnOrdenar"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/pregunta1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="26dp"
-            android:background="@drawable/cajas_respuestas"
-            android:orientation="vertical"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMisPreguntas"
+            android:layout_width="408dp"
+            android:layout_height="540dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="1dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bttnOrdenar">
-
-
-            <TextView
-                android:id="@+id/textViewTitulo"
-                android:layout_width="281dp"
-                android:layout_height="19dp"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum MIS PREGUNTAS"
-                android:textColor="#072D4B" />
-
-            <TextView
-                android:id="@+id/textViewDescripcion"
-                android:layout_width="339dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-                android:textColor="#81072D4B" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/recyclerViewTextViewUsuario"
-                    android:layout_width="71dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Usuario1" />
-
-                <TextView
-                    android:id="@+id/textViewFecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="09/05/2022"
-                    android:textAlignment="textEnd" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/pregunta2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="26dp"
-            android:background="@drawable/cajas_respuestas"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pregunta1">
-
-
-            <TextView
-                android:id="@+id/tituloPregunta2"
-                android:layout_width="90dp"
-                android:layout_height="19dp"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum"
-                android:textColor="#072D4B" />
-
-            <TextView
-                android:id="@+id/descripcionPregunta2"
-                android:layout_width="339dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-                android:textColor="#81072D4B" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/usuarioPregunta2"
-                    android:layout_width="71dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Usuario1" />
-
-                <TextView
-                    android:id="@+id/fechaPregunta2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="09/05/2022"
-                    android:textAlignment="textEnd" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/pregunta3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="26dp"
-            android:background="@drawable/cajas_respuestas"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pregunta2">
-
-
-            <TextView
-                android:id="@+id/tituloPregunta3"
-                android:layout_width="90dp"
-                android:layout_height="19dp"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum"
-                android:textColor="#072D4B" />
-
-            <TextView
-                android:id="@+id/descripcionPregunta3"
-                android:layout_width="339dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-                android:textColor="#81072D4B" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/usuarioPregunta3"
-                    android:layout_width="71dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Usuario1" />
-
-                <TextView
-                    android:id="@+id/fechaPregunta3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="09/05/2022"
-                    android:textAlignment="textEnd" />
-            </LinearLayout>
-        </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/bttnAgregar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

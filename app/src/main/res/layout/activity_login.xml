@@ -42,7 +42,7 @@
             android:autofillHints="username"
             android:background="@drawable/custom_edittext"
             android:fontFamily="@font/outfit_regular"
-            android:hint="@string/usuario"
+            android:hint="@string/email"
             android:inputType="text"
             android:labelFor="@+id/etMail"
             android:textAlignment="viewStart"
